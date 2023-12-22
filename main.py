@@ -8,7 +8,7 @@ alphabet = 'abcdefghijklmnopqrstuvwxyz0123456789'
 
 
 # encrypted_text = ''
-def caesar(message, shift):
+def encrypt(message, shift):
     encrypted_text = ''
     for char in message.lower():
         if char == ' ':
@@ -21,5 +21,20 @@ def caesar(message, shift):
             encrypted_text += alphabet[new_index]
     print(encrypted_text)
 
+encrypt(message, shift)
 
-caesar(message, shift)
+encrypted_text = encrypt(message, shift)
+# this is the decryption function
+def decrypt(encrypted_text, shift):
+    decrypted_text = ''
+    for char in encrypted_text:
+        if char == ' ':
+            decrypted_text += char
+        else:
+            index = alphabet.find(char)
+            new_index = (index - shift) % len(alphabet)
+            decrypted_text += alphabet[new_index]
+    print('Decrypted text:', decrypted_text)
+
+# Call the decrypt function
+decrypt(encrypted_text, shift)
